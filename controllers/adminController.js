@@ -1,6 +1,7 @@
 const Bus = require("../models/Bus");
 const BusHistory = require("../models/BusHistory");
 const User = require("../models/User");
+const Schedule = require("../models/Schedule");
 
 // GET ALL BUSES (admin) – includes who is assigned and who is driving right now
 exports.getBuses = async (req, res) => {
@@ -63,6 +64,7 @@ exports.deleteBus = async (req, res) => {
       return res.status(400).json({ message: "This bus is running right now. Try again when it is offline." });
     }
     await Bus.deleteOne({ busNo });
+    await Schedule.deleteOne({ busNo });
     await User.updateMany({ assignedBus: busNo }, { assignedBus: null });
     res.json({ message: "Bus deleted" });
   } catch (err) {
@@ -80,3 +82,25 @@ exports.getBusHistory = async (req, res) => {
     res.status(500).json({ message: "Failed to load history" });
   }
 };
+
+// DELETE the activity history of ONE bus
+exports.deleteBusHistory = async (req, res) => {
+  try {
+    const busNo = normaliseBusNo(req.params.busNo);
+    const r = await BusHistory.deleteMany({ busNo });
+    res.json({ message: "History deleted", deleted: r.deletedCount || 0 });
+  } catch (err) {
+    res.status(500).json({ message: "Failed to delete history" });
+  }
+};
+
+// DELETE the activity history of ALL buses
+exports.clearAllHistory = async (req, res) => {
+  try {
+    const r = await BusHistory.deleteMany({});
+    res.json({ message: "All history deleted", deleted: r.deletedCount || 0 });
+  } catch (err) {
+    res.status(500).json({ message: "Failed to delete history" });
+  }
+};
+

@@ -1,0 +1,313 @@
+[
+  {
+    "busNo": "bus01",
+    "route": "Campus ↔ Halishahar",
+    "trips": [
+      {
+        "trip": "Morning",
+        "route": "Campus → Halishahar",
+        "time": "7:20 AM → 7:40 AM"
+      },
+      {
+        "trip": "Return",
+        "route": "Halishahar → Campus",
+        "time": "7:45 AM → 8:30 AM"
+      },
+      {
+        "trip": "Morning",
+        "route": "Campus → Agrabad",
+        "time": "8:30 AM → 9:00 AM"
+      },
+      {
+        "trip": "Return",
+        "route": "Agrabad → Campus",
+        "time": "9:00 AM → 9:35 AM"
+      },
+      {
+        "trip": "Noon",
+        "route": "Campus → Halishahar",
+        "time": "1:45 PM → 2:40 PM"
+      },
+      {
+        "trip": "Return",
+        "route": "Halishahar → Campus",
+        "time": "2:40 PM → 3:30 PM"
+      },
+      {
+        "trip": "Evening",
+        "route": "Campus → 2 No Gate",
+        "time": "4:00 PM → 4:40 PM"
+      },
+      {
+        "trip": "Night",
+        "route": "Campus → Halishahar",
+        "time": "5:20 PM → 6:00 PM"
+      },
+      {
+        "trip": "Return",
+        "route": "Halishahar → Campus",
+        "time": "6:00 PM → 7:20 PM"
+      }
+    ]
+  },
+  {
+    "busNo": "bus02",
+    "route": "Campus ↔ Bhatiari / Sagorika",
+    "trips": [
+      {
+        "trip": "Morning",
+        "route": "Campus → Bhatiari Moor",
+        "time": "7:30 AM → 8:00 AM"
+      },
+      {
+        "trip": "Return",
+        "route": "Bhatiari Moor → Campus",
+        "time": "8:10 AM → 8:20 AM"
+      },
+      {
+        "trip": "Morning",
+        "route": "Campus → Bhatiari Moor",
+        "time": "8:30 AM → 9:00 AM"
+      },
+      {
+        "trip": "Return",
+        "route": "Bhatiari Moor → Campus",
+        "time": "9:10 AM → 9:20 AM"
+      },
+      {
+        "trip": "Mid-Morning",
+        "route": "Campus → Sagorika",
+        "time": "9:20 AM → 9:40 AM"
+      },
+      {
+        "trip": "Return",
+        "route": "Sagorika → Campus",
+        "time": "9:40 AM → 10:10 AM"
+      },
+      {
+        "trip": "Noon",
+        "route": "Campus → Alongkar Moor",
+        "time": "10:10 AM → 10:40 AM"
+      },
+      {
+        "trip": "Return",
+        "route": "Alongkar Moor → Campus",
+        "time": "10:50 AM → 11:10 AM"
+      },
+      {
+        "trip": "Afternoon",
+        "route": "Campus → Baizid Link Rd",
+        "time": "12:30 PM → 12:40 PM"
+      },
+      {
+        "trip": "Return",
+        "route": "Baizid Link Rd → Campus",
+        "time": "12:40 PM → 12:50 PM"
+      },
+      {
+        "trip": "Evening",
+        "route": "Campus → Bhatiari Moor",
+        "time": "5:20 PM → 6:00 PM"
+      },
+      {
+        "trip": "Return",
+        "route": "Bhatiari Moor → Campus",
+        "time": "6:30 PM → 6:45 PM"
+      }
+    ]
+  },
+  {
+    "busNo": "bus03",
+    "route": "Campus ↔ Chawkbazar / Olikha Moor",
+    "trips": [
+      {
+        "trip": "Morning",
+        "route": "Campus → Chawkbazar (Olikha Moor)",
+        "time": "7:30 AM → 8:40 AM"
+      },
+      {
+        "trip": "Morning",
+        "route": "Campus → Chawkbazar (Olikha Moor)",
+        "time": "8:40 AM → 10:00 AM"
+      },
+      {
+        "trip": "Late Morning",
+        "route": "Campus → Chawkbazar (Olikha Moor)",
+        "time": "10:00 AM → 11:00 AM"
+      },
+      {
+        "trip": "Noon",
+        "route": "Campus → Chawkbazar (Olikha Moor)",
+        "time": "11:00 AM → 12:00 PM"
+      },
+      {
+        "trip": "Afternoon",
+        "route": "Campus → Chawkbazar (Olikha Moor)",
+        "time": "1:40 PM → 2:50 PM"
+      },
+      {
+        "trip": "Evening",
+        "route": "Campus → U-Turn Mayor Goli",
+        "time": "4:40 PM → 5:20 PM"
+      },
+      {
+        "trip": "Night",
+        "route": "Campus → U-Turn Mayor Goli",
+        "time": "6:30 PM → 9:50 PM"
+      }
+    ]
+  },
+  {
+    "busNo": "bus04",
+    "route": "Campus ↔ Natun Bridge / Kotowali",
+    "trips": [
+      {
+        "trip": "Morning",
+        "route": "Campus → Natun Bridge (Outer Link)",
+        "time": "7:00 AM → 7:30 AM"
+      },
+      {
+        "trip": "Morning",
+        "route": "Natun Bridge → Campus (via Kotowali)",
+        "time": "7:30 AM → 8:30 AM"
+      },
+      {
+        "trip": "Morning",
+        "route": "Campus → Kotowali Moor",
+        "time": "8:30 AM → 9:00 AM"
+      },
+      {
+        "trip": "Morning",
+        "route": "Kotowali → Campus",
+        "time": "9:00 AM → 10:00 AM"
+      },
+      {
+        "trip": "Mid-Day Shuttle",
+        "route": "Campus ↔ 2 No. Gate",
+        "time": "10:00 AM → 1:20 PM"
+      },
+      {
+        "trip": "Afternoon",
+        "route": "Campus → Natun Bridge",
+        "time": "1:45 PM → 3:00 PM"
+      },
+      {
+        "trip": "Afternoon",
+        "route": "Natun Bridge → Campus",
+        "time": "3:00 PM → 4:00 PM"
+      },
+      {
+        "trip": "Evening",
+        "route": "Campus → Natun Bridge",
+        "time": "5:20 PM → 6:00 PM"
+      },
+      {
+        "trip": "Evening",
+        "route": "Natun Bridge → Campus",
+        "time": "6:00 PM → 7:00 PM"
+      }
+    ]
+  },
+  {
+    "busNo": "bus05",
+    "route": "Campus ↔ Hathazari / Oxygen",
+    "trips": [
+      {
+        "trip": "Morning",
+        "route": "Campus → Hathazari College Gate",
+        "time": "7:00 AM → 7:30 AM"
+      },
+      {
+        "trip": "Morning",
+        "route": "Hathazari College Gate → Campus",
+        "time": "7:40 AM → 8:20 AM"
+      },
+      {
+        "trip": "Morning",
+        "route": "Campus → Fateyabad",
+        "time": "9:00 AM → 9:30 AM"
+      },
+      {
+        "trip": "Mid-Morning",
+        "route": "Fateyabad → Campus → Oxygen",
+        "time": "9:30 AM → 10:00 AM"
+      },
+      {
+        "trip": "Late Morning",
+        "route": "Oxygen → Campus",
+        "time": "10:00 AM → 11:20 AM"
+      },
+      {
+        "trip": "Afternoon",
+        "route": "Campus → Hathazari Bus Stand",
+        "time": "1:45 PM → 2:30 PM"
+      },
+      {
+        "trip": "Afternoon",
+        "route": "Hathazari Bus Stand → Campus",
+        "time": "2:30 PM → 3:30 PM"
+      },
+      {
+        "trip": "Evening",
+        "route": "Campus → Hathazari Bus Stand",
+        "time": "5:20 PM → 6:30 PM"
+      }
+    ]
+  },
+  {
+    "busNo": "bus06",
+    "route": "Campus ↔ Moulavibazar / Chandgaon",
+    "trips": [
+      {
+        "trip": "Morning",
+        "route": "Campus → Moulavibazar",
+        "time": "7:00 AM → 7:25 AM"
+      },
+      {
+        "trip": "Morning Return",
+        "route": "Moulavibazar → Campus",
+        "time": "7:30 AM → 8:20 AM"
+      },
+      {
+        "trip": "Morning",
+        "route": "Campus → Chandgaon (Hazera Tazu College)",
+        "time": "8:20 AM → 9:00 AM"
+      },
+      {
+        "trip": "Return",
+        "route": "Chandgaon → Campus",
+        "time": "9:00 AM → 9:30 AM"
+      },
+      {
+        "trip": "Late Morning",
+        "route": "Campus → Bahaddarhut Moor",
+        "time": "9:40 AM → 10:20 AM"
+      },
+      {
+        "trip": "Return",
+        "route": "Bahaddarhut → Campus",
+        "time": "10:20 AM → 10:40 AM"
+      },
+      {
+        "trip": "Afternoon",
+        "route": "Campus → Moulavibazar",
+        "time": "1:45 PM → 2:30 PM"
+      },
+      {
+        "trip": "Afternoon Return",
+        "route": "Moulavibazar → Campus",
+        "time": "2:30 PM → 3:00 PM"
+      },
+      {
+        "trip": "Evening",
+        "route": "Campus → Moulavibazar",
+        "time": "5:20 PM → 6:30 PM"
+      },
+      {
+        "trip": "Evening Return",
+        "route": "Moulavibazar → Campus",
+        "time": "6:30 PM → 7:20 PM"
+      }
+    ]
+  }
+]

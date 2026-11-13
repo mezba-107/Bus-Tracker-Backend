@@ -93,17 +93,26 @@ module.exports = (io) => {
     });
 
     /* ================= BUS LIVE LOCATION (driver only) ================= */
-    socket.on("busLocation", async (data) => {
-      if (!socket.isDriver) return; // spoofing protection
-      if (!data) return;
+    // `ack` (optional) lets the driver panel know if the location was accepted, or why not
+    socket.on("busLocation", async (data, ack) => {
+      const reply = (r) => typeof ack === "function" && ack(r);
+
+      if (!socket.isDriver) {
+        // spoofing protection: only logged-in drivers may send locations
+        return reply({ ok: false, code: "not_driver", message: "This server does not accept your driver login. Log out and log in again." });
+      }
+      if (!data) return reply({ ok: false, code: "bad_data", message: "Empty location" });
 
       const busNo = norm(data.busNo);
       const lat = Number(data.lat);
       const lng = Number(data.lng);
-      if (!busNo || !isNum(lat) || !isNum(lng)) return;
-      if (lat < -90 || lat > 90 || lng < -180 || lng > 180) return;
+      if (!busNo || !isNum(lat) || !isNum(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {
+        return reply({ ok: false, code: "bad_location", message: "Invalid bus or GPS position" });
+      }
 
-      if (!live.has(busNo) && !(await isRegistered(busNo))) return; // unknown bus number
+      if (!live.has(busNo) && !(await isRegistered(busNo))) {
+        return reply({ ok: false, code: "unknown_bus", message: `${busNo.toUpperCase()} is not a registered bus on this server` });
+      }
 
       const now = Date.now();
       const payload = {
@@ -129,6 +138,7 @@ module.exports = (io) => {
 
       // 1) BROADCAST FIRST  -> students see it instantly (no DB latency in the path)
       io.emit("busLocationUpdate", publicPayload(payload));
+      reply({ ok: true });
 
       // 2) persist afterwards, throttled
       if (now - entry.lastDbWrite >= BUS_DB_WRITE_MS || !prev) {
@@ -167,7 +177,12 @@ module.exports = (io) => {
       const n = norm(busNo);
       if (!n) return;
       const entry = live.get(n);
-      if (entry && entry.socketId !== socket.id) return; // someone else owns this bus now
+      if (!entry) {
+        // bus was not live (e.g. GPS never started): no history spam, just make sure the DB says offline
+        Bus.updateOne({ busNo: n, status: "online" }, { status: "offline", lastUpdate: new Date() }).catch(() => {});
+        return;
+      }
+      if (entry.socketId !== socket.id) return; // someone else owns this bus now
       markOffline(n, "stop");
     });
 

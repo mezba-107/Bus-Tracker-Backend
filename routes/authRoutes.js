@@ -39,7 +39,7 @@ router.post("/login", async (req, res) => {
 
   try {
     /* ---- admin ---- */
-    const admin = await Admin.findOne({ $or: [{ email: identifier }, { username: identifier }] });
+    const admin = await Admin.findOne({ $or: [{ email: identifier.toLowerCase() }, { username: identifier }] });
     if (admin && (await bcrypt.compare(password, admin.password))) {
       const token = jwt.sign({ id: admin._id, role: admin.role }, process.env.JWT_SECRET, { expiresIn: "1d" });
       return res.json({

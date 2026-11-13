@@ -41,6 +41,7 @@ const { live } = initSocket(io);
 app.get("/health", (req, res) => res.json({ ok: true, liveBuses: live.size }));
 
 app.use("/api/buses", require("./routes/busRoutes")(live)); // public, read only
+app.use("/api/schedule", require("./routes/scheduleRoutes")); // public timetable for students
 app.use("/api/auth", require("./routes/authRoutes")); // one login for the mobile app
 app.use("/api/admin", adminAuthRoutes);
 app.use("/api/admin", adminDriverRoutes);

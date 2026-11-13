@@ -4,6 +4,7 @@ const Admin = require("../models/Admin");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const adminAuth = require("../middleware/adminAuth");
+const { updateProfile, changePassword } = require("../controllers/adminAccountController");
 
 // =====================
 // ADMIN LOGIN
@@ -17,7 +18,7 @@ router.post("/login", async (req, res) => {
   // 🔥 Find admin by email OR username
   const admin = await Admin.findOne({
     $or: [
-      { email: identifier },
+      { email: identifier.toLowerCase() },
       { username: identifier }
     ]
   });
@@ -50,6 +51,7 @@ router.get("/profile", adminAuth, async (req, res) => {
   if (!admin) return res.status(404).json({ message: "Admin not found" });
 
   res.json({
+    id: String(admin._id),
     name: admin.name,
     username: admin.username,
     role: admin.role,
@@ -59,32 +61,13 @@ router.get("/profile", adminAuth, async (req, res) => {
 });
 
 // =====================
-// UPDATE PROFILE
+// UPDATE PROFILE  (name, username, mobile, email - validated, unique)
 // =====================
-router.put("/profile", adminAuth, async (req, res) => {
-  const { name, username, mobile } = req.body;
-
-  await Admin.findByIdAndUpdate(req.admin.id, { name, username, mobile });
-
-  res.json({ message: "Profile updated successfully" });
-});
+router.put("/profile", adminAuth, updateProfile);
 
 // =====================
 // CHANGE PASSWORD
 // =====================
-router.post("/change-password", adminAuth, async (req, res) => {
-  const { oldPassword, newPassword } = req.body;
-
-  const admin = await Admin.findById(req.admin.id);
-
-  const isMatch = await bcrypt.compare(oldPassword, admin.password);
-  if (!isMatch)
-    return res.status(400).json({ message: "Current password incorrect" });
-
-  admin.password = await bcrypt.hash(newPassword, 10);
-  await admin.save();
-
-  res.json({ message: "Password updated successfully" });
-});
+router.post("/change-password", adminAuth, changePassword);
 
 module.exports = router;
